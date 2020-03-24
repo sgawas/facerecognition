@@ -47,11 +47,21 @@ class App extends React.Component {
   }
 
   calculateFaceLocation = (data) => {
+    console.log(data.outputs.length);
     const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
     const image = document.getElementById('inputImage');
     const width = Number(image.width);
     const height = Number(image.height);
-
+    const clarFace = data.outputs[0].data.regions;
+    const mydifObj =  clarFace.map(reg => {
+      return {
+        leftCol: reg.region_info.bounding_box.left_col * width,
+        topRow: reg.region_info.bounding_box.top_row * height,
+        rightCol: width - (reg.region_info.bounding_box.right_col * width),
+        bottomRow: height - (reg.region_info.bounding_box.bottom_row * height)
+      }
+    });
+    console.log("imageObjects=", mydifObj);
     return {
       leftCol:  clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
