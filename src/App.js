@@ -99,7 +99,9 @@ class App extends React.Component {
           this.setState(Object.assign(this.state.user, {entries:count}))
         })
       }
-      this.displayFaceBox(this.calculateFaceLocation(response))
+      const disRes = this.calculateFaceLocation(response);
+      console.log("displaying response= ",disRes);
+      this.displayFaceBox(disRes)
     })
     .catch(err=> console.log(err))
   }
