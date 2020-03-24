@@ -61,14 +61,16 @@ class App extends React.Component {
         bottomRow: height - (reg.region_info.bounding_box.bottom_row * height)
       }
     });
-    console.log("imageObjects=", mydifObj);
-    return {
-      leftCol:  clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - (clarifaiFace.right_col * width),
-      bottomRow: height - (clarifaiFace.bottom_row * height)
-    };
+    return mydifObj;
+    // console.log("imageObjects=", mydifObj);
+    // return {
+    //   leftCol:  clarifaiFace.left_col * width,
+    //   topRow: clarifaiFace.top_row * height,
+    //   rightCol: width - (clarifaiFace.right_col * width),
+    //   bottomRow: height - (clarifaiFace.bottom_row * height)
+    // };
   }
+  
   disableBoxDisplay = () => {
     this.setState({box: {}});
     this.setState({imageUrl: ''});
