@@ -8,12 +8,23 @@ const FaceRecognizer = ({ imageUrl, box }) => {
         <div className='center ma'>
             <div className='absolute mt2'>
                 <img id='inputImage' src={imageUrl} alt='' width='500px' height='auto'/>
-                box.forEach(element => {
-                    <div className='bounding-box' 
-                    style={{top: element.topRow, right: element.rightCol, bottom: element.bottomRow, left: element.leftCol}}>
-    
-                    </div>
-                });
+                {
+                    box.map((imageDetail)=> {
+                        return (
+                            <div className='bounding-box' 
+                            style={
+                                {
+                                    top: imageDetail.topRow, 
+                                    right: imageDetail.rightCol, 
+                                    bottom: imageDetail.bottomRow, 
+                                    left: imageDetail.leftCol
+                                }
+                            }
+                            >
+                            </div>
+                        )
+                    })  
+                }
             </div> 
         </div>
     );
